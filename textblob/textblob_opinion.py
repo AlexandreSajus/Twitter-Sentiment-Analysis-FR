@@ -2,6 +2,9 @@ import json
 import numpy as np
 from textblob import TextBlob
 
+import seaborn as sns
+import matplotlib.pyplot as plt
+
 # pos_tweets = []
 # neu_tweets = []
 # neg_tweets = []
@@ -55,6 +58,12 @@ def get_tweets_opinion(tweets):
         'sentiment': sentiment
     }
 
+def dtl_sentiment(dict):
+    pol, sub = [],[]
+    for s in dict:
+        pol.append(dict[s].polarity)
+        sub.append(dict[s].subjectivity)
+    return {'polarity': pol, 'subjectivity': sub}
 
 if __name__ == "__main__":
     f = open('../data/data.json')
@@ -73,5 +82,11 @@ if __name__ == "__main__":
 
     print(opinion['sentiment'])
     print(get_tweets_text(tweets, length))
-    
+
+    print(dtl_sentiment(opinion['sentiment']))
+    sns.set_theme()
+    sns.scatterplot(data=dtl_sentiment(opinion['sentiment']),
+        x="polarity", y="subjectivity"
+    )
+    plt.show()
     f.close()

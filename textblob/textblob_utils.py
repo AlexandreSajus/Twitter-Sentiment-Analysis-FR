@@ -62,5 +62,5 @@ def extract_unique(arr):
             lst.append(Word(word.lower()))
     return lst
 
-lst = extract_unique(["this is a test", "The test is a pretty little chick. ", "yes it is the pretty"])
-print(lst)
+# lst = extract_unique(["this is a test", "The test is a pretty little chick. ", "yes it is the pretty"])
+# print(lst)
