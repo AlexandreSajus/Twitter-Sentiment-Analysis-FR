@@ -57,7 +57,7 @@ tweets['polarity'] = sentiment['polarity']
 tweets['subjectivity'] = sentiment['subjectivity']
 tweets['opinion'] = sentiment['opinion']
 
-external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']#, './style.css']
+external_stylesheets = #['https://codepen.io/chriddyp/pen/bWLwgP.css']#, './style.css']
 
 app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
 
