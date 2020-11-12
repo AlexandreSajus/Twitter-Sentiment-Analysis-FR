@@ -14,7 +14,7 @@ def store_tweets_json(tweets,filename):
             dico = {}
             dico["text"] = tweet.text
             dico["user_id"] = tweet.user.id
-            dico["date"] = tweet.created_at
+            dico["date"] = str(tweet.created_at)
             dico["tweet_id"] = tweet.id
             dico["retweets"] = tweet.retweet_count
             dico["is_a_retweet"] = tweet.retweeted
