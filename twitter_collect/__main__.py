@@ -38,3 +38,8 @@ def stop_listener(stream):
     Arrête l'écoute.
     """
     streaming.close_stream(stream)
+
+tweets = collect_wanted_data(1,'data/candidate_data',True,False)
+for tweet in tweets :
+    print(tweet.text)
+storage.store_tweets_json(tweets,'tweets_sample.json')

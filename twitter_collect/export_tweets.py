@@ -15,3 +15,7 @@ def export_tweets_to_dataframe(tweets):
         dico["favorites"] = tweets[i].favorite_count
         dataframe = dataframe.append(dico,ignore_index=True)
     return dataframe
+
+
+def export_json_to_dataframe(filepath):
+    return pd.read_json(filepath).loc[::,["text","user_id","date","tweet_id","retweets","is_a_retweet","favorites"]]
