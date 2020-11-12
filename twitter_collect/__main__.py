@@ -1,10 +1,10 @@
-import collect_tweet_candidate_data as datam
-import collect_tweet_streaming as streaming
-import collect_tweet_actuality as acuality
-import store_tweets as storage
-import export_tweets as export
+from . import collect_tweet_candidate_data as datam
+from . import collect_tweet_streaming as streaming
+from . import collect_tweet_actuality as acuality
+from . import store_tweets as storage
+from . import export_tweets as export
 import tweepy
-import twitter_connection_setup as connexion
+from . import twitter_connection_setup as connexion
 
 conn = connexion.twitter_setup()
 

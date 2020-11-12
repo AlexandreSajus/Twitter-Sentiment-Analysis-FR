@@ -1,5 +1,5 @@
 import tweepy
-import credentials as cred
+from . import credentials as cred
 
 
 # Initialize auth
