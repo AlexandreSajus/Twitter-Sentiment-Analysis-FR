@@ -1,0 +1,49 @@
+#main-container {
+    height: 550px;
+    margin: 25px;
+}
+
+#input-container {
+    width: 35%;
+    height: 100%;
+    background-color: coral;
+    margin: 5px;
+    display: inline-flex;
+    padding: 5px;
+}
+#result-container {
+    width: 61%;
+    height: 100%;
+    background-color: aquamarine;
+    /* margin: 5px; */
+    display: inline-flex;
+    padding: 5px;
+}
+
+.nav li {
+    display: block;
+    width: auto;
+}
+
+.nav li h3 {
+    height: max-content;
+    margin-bottom: 2px;
+}
+
+#plot-container {
+    height: 200px;
+    background-color: darkorange;
+}
+#analysis-container {
+    height: 200px;
+    background-color: lawngreen;
+}
+
+#search-container {
+    height: 250px;
+    background-color:khaki;
+}
+#more-container {
+    height: 150px;
+    background-color:gray;
+}
