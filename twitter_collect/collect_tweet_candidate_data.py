@@ -15,7 +15,7 @@ conn = connexion.twitter_setup()
 def get_candidate_query(candidate_number,path,is_keyword,is_hashtag):
     """
     Renvoie la liste des requêtes associées au candidat candidate_number
-    :param candidate_number: Numéro du candidat concerné
+    :param candidate_number: Numéro du candidat concerné : il s'agit de son id twitter
     :type candidate_number: Int
     :param path: chemin jusqu'aux fichiers de données fournis par le client
     :type path: Str
@@ -53,8 +53,6 @@ def get_tweets_from_candidates_search_queries(queries) :
     Récupère les tweets correspodants aux mot-clés entrés en paramètre
     :param queries: La liste de tous les mots clés ou hashtag que l'on doit rechercher dans Twitter
     :type queries: List
-    :param twitter_api: La connexion à l'API twitter
-    :type twitter_api: ??? (tweepy.API)
 
     :return: La liste des tweets qui correspondent aux mots clé demandés
     :rtype: List
