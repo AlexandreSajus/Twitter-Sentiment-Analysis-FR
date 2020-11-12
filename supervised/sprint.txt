@@ -1,0 +1,4 @@
+
+・Importing libraries / dataset
+・Preprocessing the dataset and text -> converting text to numbers
+・Training and test sets
