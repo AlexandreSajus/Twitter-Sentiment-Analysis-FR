@@ -6,6 +6,9 @@ from tweepy.streaming import StreamListener
 conn = connexion.twitter_setup()
 
 class StdOutListener(tweepy.StreamListener):  #Stocker puis exporter les tweets reçus à la fermeture
+    """
+    Surcharge de l'objet StreamListener de tweepy : permet de définir l'action à effectuer aux tweets pendant le stream
+    """
     
     def on_data(self, data):
         my_data = json.loads(data)
@@ -26,12 +29,12 @@ class StdOutListener(tweepy.StreamListener):  #Stocker puis exporter les tweets 
 
 def listen_tweets(keyword) :
     """
-    Ecoute et capture les tweets relatifs au candidat, ainsi que les réponses à ses tweets
-    :param num_candidate: Le numéro du candidat concerné : il s'agit de son id Tweeter
-    :type num_candidate: Int
+    Ecoute et capture les tweets correspondant au mot clé passé en entrée
+    :param keyword: Le numéro du candidat concerné : il s'agit de son id Tweeter
+    :type keyword: Str
 
-    :return: La liste des retweets du tweet donné en argument
-    :rtype: List
+    :return: L'objet streaming twitter qui vient d'être créé
+    :rtype: StdOutListener
     """
     username = candidate_username
     listener1 = StdOutListener()
@@ -40,4 +43,9 @@ def listen_tweets(keyword) :
     return stream1
 
 def close_stream(stream):
+    """
+    Ferme le stream passé en entrée
+    :param stream: Le stream à fermer
+    :type stream: StdOutListener
+    """
     stream.disconnect()

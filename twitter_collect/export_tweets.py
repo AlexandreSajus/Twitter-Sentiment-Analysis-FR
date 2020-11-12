@@ -2,6 +2,14 @@ import pandas as pd
 import json
 
 def export_tweets_to_dataframe(tweets):
+    """
+    Transforme une liste de tweets en un dataframe. Attention : la structure du dataframe n'est pas souple !
+    :param tweets: La liste des tweets à traiter
+    :type tweets: List
+
+    :return: Le dataframe contenant les informations contenues dans les tweets
+    :rtype: Pandas.Dataframe
+    """
     n = len(tweets)
     dataframe = pd.DataFrame(columns=['text','user_id','date','tweet_id','retweets','is_a_retweet','favorites'])
     for i in range(n):
@@ -18,4 +26,12 @@ def export_tweets_to_dataframe(tweets):
 
 
 def export_json_to_dataframe(filepath):
+    """
+    Exporte les informations contenues dans un fichier json dans un dataframe Pandas
+    :param filepath: Le chemin d'acces du fichier json à traiter
+    :param filepath: Str
+
+    :return: Le dataframe contenant les informations du json
+    :rtype: Pandas.Dataframe
+    """
     return pd.read_json(filepath).loc[::,["text","user_id","date","tweet_id","retweets","is_a_retweet","favorites"]]
