@@ -2,6 +2,7 @@ import collect_tweet_candidate_data as datam
 import collect_tweet_streaming as streaming
 import collect_tweet_actuality as acuality
 import store_tweets as storage
+import export_tweets as export
 import tweepy
 import twitter_connection_setup as connexion
 
@@ -37,4 +38,3 @@ def stop_listener(stream):
     Arrête l'écoute.
     """
     streaming.close_stream(stream)
-
