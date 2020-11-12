@@ -8,7 +8,7 @@ Les normes de nom des fichiers sont celles du sujet, à savoir :
 """
 
 import tweepy
-import twitter_connection_setup as connexion
+from . import twitter_connection_setup as connexion
 
 conn = connexion.twitter_setup()
 

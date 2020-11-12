@@ -1,6 +1,6 @@
 import tweepy
 import json
-import twitter_connection_setup as connexion
+from . import twitter_connection_setup as connexion
 from tweepy.streaming import StreamListener
 
 conn = connexion.twitter_setup()

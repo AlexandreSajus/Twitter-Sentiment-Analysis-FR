@@ -1,6 +1,6 @@
 import tweepy
 
-import twitter_connection_setup as connexion
+from . import twitter_connection_setup as connexion
 
 
 
