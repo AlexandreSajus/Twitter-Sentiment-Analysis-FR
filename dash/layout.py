@@ -16,7 +16,8 @@ app.layout = html.Div(children=[
     html.H1('Sentiment Analysis Application'),
     html.Div(id='main-container', style={
             'height': '550px',
-            'margin': '25px'
+            'margin': '25px',
+            'borderBottom': 'thin lightgrey solid'
         },
         children=[
         html.Div(id='input-container', style={
@@ -35,13 +36,16 @@ app.layout = html.Div(children=[
                         html.H4('Search'),
 
                         html.Label('Keywords and hastags :'),
-                        dcc.Input(value='', type='text'),
+                        dcc.Input(value='', id='search-input', type='text'),
                         
                         html.Label('Select mode'),
                         dcc.Dropdown(options=[
                             {'label': 'Positivity', 'value': 'positivity'},
                             {'label': 'Subjectivity', 'value': 'subjectivity'}
-                        ], value='positivity', multi=True)
+                        ], value='positivity', multi=True),
+                        html.Button('Research', id='search-button'),
+                        html.Div(id='output-search-button', style={'color': 'red', 'margin-top': '10px'},
+                            children='No current research')
                     ])
                 ]),
                 html.Li([
@@ -74,7 +78,7 @@ app.layout = html.Div(children=[
                     ])
                 ]),
                 html.Li(children=[
-                    html.Div(id='analysis-container', style={'width': '700px'}, children=[
+                    html.Div(id='analysis-container', style={'width': '700px', 'float': 'right'}, children=[
                         html.Label('Analysis')
                     ])
                 ]),
@@ -82,6 +86,13 @@ app.layout = html.Div(children=[
         ])
     ])
 ])
+
+@app.callback(
+    dash.dependencies.Output('output-search-button', 'children'),
+    [dash.dependencies.Input('search-button', 'n_clicks')],
+    [dash.dependencies.State('search-input', 'value')])
+def update_output(n_clicks, value):
+    return 'Current research : {}'.format(value)
 
 if __name__ == '__main__':
     app.run_server(debug=True)
