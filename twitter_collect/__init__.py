@@ -1,20 +1,6 @@
 import tweepy
-# We import our access keys:
-from tweet_collection.credentials import *   
+from twitter_connection_setup import *
+from collect_twitter_data import *
 
-def twitter_setup():
-    """
-    Utility function to setup the Twitter's API
-    with an access keys provided in a file credentials.py
-    :return: the authentified API
-    """
-    # Authentication and access using keys:
-    auth = tweepy.OAuthHandler(CONSUMER_KEY, CONSUMER_SECRET)
-    auth.set_access_token(ACCESS_TOKEN, ACCESS_SECRET)
-
-    # Return API with authentication:
-    api = tweepy.API(auth)
-    return api
-
-if __name__ == "__main__":
+if __name__ == "__init__":
     twitter_setup()
