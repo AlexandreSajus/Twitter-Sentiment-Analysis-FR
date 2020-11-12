@@ -1,7 +1,6 @@
 import json
 
 
-
 def store_tweets_json(tweets,filename):
     try :
         existence_test = open(filename,'r')
