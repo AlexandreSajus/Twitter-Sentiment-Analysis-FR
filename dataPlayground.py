@@ -65,5 +65,3 @@ def polarityOverTime(data):
         polarites.append(textToPolarity(data['texte'][i]))
     
     return (dates,polarites)
-
-print(polarityOverTime(testDataframe))
