@@ -5,34 +5,23 @@ import pandas as pd
 import datetime
 from textblob import TextBlob
 from textblob_fr import PatternTagger, PatternAnalyzer
+import matplotlib
+import matplotlib.pyplot as plt
 
-def dateToDatetime(dateString):
+def dateToDatetime(date):
 
     """
     Convertit la date fournie par Twitter en objet datetime
-    :param dateString: la date en format Twitter à convertir
-    :type dateString: String
+    :param dateString: la date en format timestamp à convertir
+    :type dateString: timestamp
     :return: la date en entrée en format datetime
     :rtype: objet datetime
     """
 
-    months = {"Jan" : 1, "Feb" : 2, "Mar" : 3, "Apr" : 4, "May" : 5, "Jun" : 6, "Jul" : 7, "Aug" : 8, "Sep" : 9, "Oct" : 10, "Nov" : 11, "Dec" : 12}
-    year = int(dateString[26:30])
-    month = int(months[dateString[4:7]])
-    day = int(dateString[8:10])
-    hour = int(dateString[11:13])
-    minute = int(dateString[14:16])
-    second = int(dateString[17:19])
+    return datetime.datetime.utcfromtimestamp(pd.Timestamp.to_datetime64(date).tolist()/1e9)
 
-    return datetime.datetime(year,month,day,hour,minute,second)
-
-def test_dateToDatetime():
-    assert dateToDatetime("Sat Mar 29 15:31:11 +0000 2014") == datetime.datetime(2014,3,29,15,31,11)
-
-#Dataframe de test
-testDataframe = {'texte': ['le cinéma est très bien','le cinéma est bien','le cinéma est moyen','le cinéma est pas terrible','le cinéma est vraiment nul'],
-'date' : ["Sat Mar 10 15:31:11 +0000 2014","Sat Mar 10 21:31:11 +0000 2014","Sat Mar 11 15:31:11 +0000 2014","Sat Mar 12 15:31:11 +0000 2014","Sat Mar 13 15:31:11 +0000 2014"]}
-testDataframe = pd.DataFrame(data=testDataframe)
+#Dataframe de test, importé en json
+testDataframe = pd.read_json (r'tweets_sample.json')
 
 def textToPolarity(text):
 
@@ -62,6 +51,23 @@ def polarityOverTime(data):
 
     for i in range(len(data['date'])):
         dates.append(dateToDatetime(data['date'][i]))
-        polarites.append(textToPolarity(data['texte'][i]))
+        polarites.append(textToPolarity(data['text'][i]))
     
     return (dates,polarites)
+
+def plotPolarityOverTime(dates, polarites):
+
+    """
+    Plot la polarite des tweets en fonction du temps
+    :param data: dates en format datetime.datetime
+    :type data: List
+    :param polarites: polarites en float de -1 à 1
+    :type polarites: List
+    """
+
+    dates = matplotlib.dates.date2num(dates)
+    plt.plot_date(dates, polarites)
+    plt.show()
+
+(dates, polarites) = polarityOverTime(testDataframe)
+plotPolarityOverTime(dates, polarites)
