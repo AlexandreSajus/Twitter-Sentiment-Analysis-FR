@@ -1,0 +1,8 @@
+wordcloud/
+keras/
+# textblob/__pycache__/
+
+setup.py
+twitter_collect/tweet_collection/credentials.py
+
+/**/__pycache__
