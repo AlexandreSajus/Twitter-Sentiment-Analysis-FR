@@ -63,10 +63,27 @@ app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
 fig = px.scatter(tweets, x="polarity", y="subjectivity",color="opinion", color_discrete_sequence=['orange', 'green', 'red'])
 
 app.layout = html.Div([
-    dcc.Graph(
-        id='life-exp-vs-gdp',
-        figure=fig
-    )
+    html.H1('Sentiment Analysis Application'),
+    html.Div([
+        html.H3('Keywords and Hastgs query'),
+        dcc.Input(value='Search query', type='text'),
+    ]),
+    html.Div([
+        html.Label('Sentiment analysis graph'),
+        dcc.Graph(
+            id='life-exp-vs-gdp',
+            figure=fig
+        )
+    ]),
+    html.Div([
+        html.Label('Result'),
+        dcc.Slider(
+            min=-10,
+            max=10,
+            marks={i: 'Label {}'.format(i) if i == 1 else str(i) for i in range(-10, 10)},
+            value=0,
+        )
+    ])
 ])
 
 if __name__ == '__main__':
