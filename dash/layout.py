@@ -7,7 +7,7 @@ from dash.dependencies import Input, Output
 import plotly.express as px
 import pandas as pd
 
-fig = px.scatter(pd.read_csv('./data_saved/scatter.csv'), x="polarity", y="subjectivity",color="opinion", color_discrete_sequence=['orange', 'green', 'red'])
+fig = px.scatter(pd.read_csv('./data_saved/scatter.csv'), x="created_at", y="polarity",color="opinion", color_discrete_sequence=['orange', 'green', 'red'])
 
 external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
 
