@@ -1,9 +1,0 @@
-{
-    "text": "texte du tweet",
-    "user_id": "id de l'expéditeur",
-    "date": "date de l'envoi du tweet (format inchangé)",
-    "tweet_id": "id du tweet",
-    "retweets": "nombre de retweets",
-    "is_a_retweet": "le message est-il un retweet ? (bool)",
-    "favorites": "nombre de likes"
-}
