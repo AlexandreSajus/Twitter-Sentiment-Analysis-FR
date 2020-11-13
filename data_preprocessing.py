@@ -7,8 +7,6 @@ import csv
 
 from textblob import TextBlob
 
-tweets = pd.read_json('../data/data.json').loc[::,['id_str', 'created_at', 'text', 'lang', 'retweet_count', 'source']]
-
 def get_tweets_opinion(tweets):
     pos_tweets = []
     neu_tweets = []
@@ -41,10 +39,14 @@ def get_tweets_opinion(tweets):
         'sentiment': sentiment
     }
 
-opinion = get_tweets_opinion(tweets)
-sentiment = opinion['sentiment']
-tweets['polarity'] = sentiment['polarity']
-tweets['subjectivity'] = sentiment['subjectivity']
-tweets['opinion'] = sentiment['opinion']
-
-tweets.to_csv('./data_saved/scatter.csv', index=True)
+def collectPolarity(keywordsList):
+    import twitter_collect as tc
+    tweets = tc.collect_tweet_candidate_data.get_tweets_from_candidates_search_queries(keywordsList)
+    dataframe = tc.export_tweets.export_tweets_to_dataframe(tweets)
+    tweets = dataframe
+    opinion = get_tweets_opinion(tweets)
+    sentiment = opinion['sentiment']
+    tweets['polarity'] = sentiment['polarity']
+    tweets['subjectivity'] = sentiment['subjectivity']
+    tweets['opinion'] = sentiment['opinion']
+    return tweets

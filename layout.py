@@ -6,8 +6,17 @@ from dash.dependencies import Input, Output
 
 import plotly.express as px
 import pandas as pd
+from data_preprocessing import collectPolarity
 
-fig = px.scatter(pd.read_csv('./data_saved/scatter.csv'), x="created_at", y="polarity",color="opinion", color_discrete_sequence=['orange', 'green', 'red'])
+def testing(n):
+    if n == "1":
+        return pd.DataFrame(data = {"x":[1], "y":[1]})
+    if n == "0":
+        return pd.DataFrame(data = {"x":[0], "y":[0]})
+
+fig = px.scatter(testing("1"), x = "x", y = "y")
+
+#fig = px.scatter(collectPolarity(["Trump"]), x="date", y="polarity",color="opinion", color_discrete_sequence=['orange', 'green', 'red'])
 
 external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
 
@@ -88,11 +97,15 @@ app.layout = html.Div(children=[
 ])
 
 @app.callback(
-    dash.dependencies.Output('output-search-button', 'children'),
+    [dash.dependencies.Output('output-search-button', 'children'),
+    dash.dependencies.Output('result-container', 'children')],
     [dash.dependencies.Input('search-button', 'n_clicks')],
     [dash.dependencies.State('search-input', 'value')])
 def update_output(n_clicks, value):
-    return 'Current research : {}'.format(value)
+    #fig = px.scatter(collectPolarity([str(value)]), x="date", y="polarity",color="opinion", color_discrete_sequence=['orange', 'green', 'red'])
+    fig = px.scatter(testing(value), x = "x", y = "y")
+    fig.update_layout(transition_duration=500)
+    return 'Current research : {}'.format(value), fig
 
 if __name__ == '__main__':
     app.run_server(debug=True)
