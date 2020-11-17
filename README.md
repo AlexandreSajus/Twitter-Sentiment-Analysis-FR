@@ -8,6 +8,8 @@ Par Fabien CHARLIER, Antoine DEBOUCHAGE, Danyel GOLBOL, Alexandre SAJUS
 ## Utilisation
 -téléchargez et extrayez le projet dans un dossier
 
+-entrez des clés Twitter API dans twitter_collect/credentials.py
+
 -exécutez Run.py
 
 -cliquez sur le lien que vous donne la console ("Running on http://...")
