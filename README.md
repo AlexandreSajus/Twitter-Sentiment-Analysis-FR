@@ -3,7 +3,7 @@ Relève le ressenti positif ou négatif de tweets récents associé à un mot cl
 
 Par Fabien CHARLIER, Antoine DEBOUCHAGE, Danyel GOLBOL, Alexandre SAJUS
 
-![](example2.png)
+![](example0.png)
 
 ## Utilisation
 -téléchargez et extrayez le projet dans un dossier
