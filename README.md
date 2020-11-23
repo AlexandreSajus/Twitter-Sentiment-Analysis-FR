@@ -1,6 +1,8 @@
 # Twitter Sentiment Analysis [FR]
 Relève le ressenti positif ou négatif de tweets récents associé à un mot clé
 
+Nécessite des clés Twitter API
+
 Par Fabien CHARLIER, Antoine DEBOUCHAGE, Danyel GOLBOL, Alexandre SAJUS
 
 ![](example0.png)
